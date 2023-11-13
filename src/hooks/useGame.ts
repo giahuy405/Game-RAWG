@@ -1,11 +1,17 @@
 import { https } from '../axiosClient'
 import { useEffect, useState } from 'react'
-import useLoading from './useLoading'
+
+export interface Platform {
+    id: number
+    name: string
+    slug: string
+}
 
 export interface gameTypes {
     id: number
     name: string
     background_image: string
+    platforms: { platform: Platform }[]
 }
 
 interface fetchGameResponse {
