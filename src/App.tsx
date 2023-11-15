@@ -12,7 +12,7 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState<GenreTypes | undefined>(undefined);
   const [selectPlatform, setSelectPlatform] = useState<PlatForm | undefined>(undefined)
   const [sortGame, setSortGame] = useState<OptionSort | undefined>(undefined);
-
+  const [text, setText] = useState<string | undefined>(undefined);
   return (
     <>
       <Grid templateAreas={{
@@ -22,7 +22,7 @@ function App() {
         padding={3}
       >
         <GridItem area='nav' >
-          <NavBar />
+          <NavBar setText={setText} text={text} />
         </GridItem>
         <Show above="lg">
           <GridItem area='aside' >
@@ -34,7 +34,7 @@ function App() {
             <PlatFormSelector selectPlatform={selectPlatform} setSelectPlatform={setSelectPlatform} />
             <Sort setSortGame={setSortGame} sortGame={sortGame} />
           </HStack>
-          <GridGames selectedGenre={selectedGenre} selectPlatform={selectPlatform} sortGame={sortGame} />
+          <GridGames text={text} selectedGenre={selectedGenre} selectPlatform={selectPlatform} sortGame={sortGame} />
         </GridItem>
       </Grid>
     </>

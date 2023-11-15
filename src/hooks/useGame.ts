@@ -25,7 +25,7 @@ interface fetchGameResponse {
     results: gameTypes[]
 }
 
-export default function useGame(selectedGenre: GenreTypes | undefined, selectPlatform: PlatForm | undefined, sortGame: OptionSort | undefined) {
+export default function useGame(selectedGenre: GenreTypes | undefined, selectPlatform: PlatForm | undefined, sortGame: OptionSort | undefined, text: string | undefined) {
 
     console.log(selectedGenre)
     const [games, setGames] = useState<gameTypes[]>([]);
@@ -36,7 +36,8 @@ export default function useGame(selectedGenre: GenreTypes | undefined, selectPla
             params: {
                 genres: selectedGenre?.id,
                 parent_platforms: selectPlatform?.id,
-                ordering: sortGame?.value
+                ordering: sortGame?.value,
+                search: text
             }
         });
         console.log(res.data)
@@ -45,7 +46,7 @@ export default function useGame(selectedGenre: GenreTypes | undefined, selectPla
     }
     useEffect(() => {
         fetchGames();
-    }, [selectedGenre, selectPlatform, sortGame])
+    }, [selectedGenre, selectPlatform, sortGame, text])
 
     return {
         games,

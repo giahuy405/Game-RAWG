@@ -11,14 +11,14 @@ interface Props {
     selectedGenre: GenreTypes | undefined
     selectPlatform: PlatForm | undefined
     sortGame: OptionSort | undefined
+    text: string | undefined
 }
 
-export default function GridGames({ selectedGenre, selectPlatform, sortGame }: Props) {
-    const { games, loading } = useGame(selectedGenre, selectPlatform, sortGame);
+export default function GridGames({ selectedGenre, selectPlatform, sortGame, text }: Props) {
+    const { games, loading } = useGame(selectedGenre, selectPlatform, sortGame, text);
 
     const skelkton = [1, 2, 3, 4, 5, 6, 7, 8]
 
-    console.log(selectPlatform)
     // const newList = games.filter(item => item.slug.includes(selectedGenre.games.slug))
     // console.log(newList)
     return (

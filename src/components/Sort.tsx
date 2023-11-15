@@ -23,7 +23,7 @@ export default function Sort({ sortGame, setSortGame }: Props) {
     return (
         <Menu>
             <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-                Platforms
+                Sort games
             </MenuButton>
             <MenuList>
 
