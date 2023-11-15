@@ -10,7 +10,7 @@ interface Props {
     setSortGame: React.Dispatch<React.SetStateAction<OptionSort | undefined>>
 }
 
-export default function Sort({ sortGame, setSortGame }: Props) {
+export default function Sort({ setSortGame }: Props) {
 
     const data = [
         { value: "", label: "Revelance" },
@@ -27,7 +27,7 @@ export default function Sort({ sortGame, setSortGame }: Props) {
             </MenuButton>
             <MenuList>
 
-                {data.map((item: OptionSort, index) =>
+                {data.map((item: OptionSort) =>
                     <MenuItem
                         onClick={() => setSortGame(item)}
                         key={item.value} >{item.label}</MenuItem>

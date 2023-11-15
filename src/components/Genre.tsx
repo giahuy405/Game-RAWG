@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import useGeneric from './useGeneric'
 import { getCropImage } from '../utils/getCroppImage'
 export interface GenreTypes {

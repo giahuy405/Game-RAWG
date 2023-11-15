@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Text } from '@chakra-ui/react'
+import { HStack, Image, Text } from '@chakra-ui/react'
 import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
 

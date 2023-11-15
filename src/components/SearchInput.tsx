@@ -1,5 +1,4 @@
-import { Button, HStack, Input, useEditable } from '@chakra-ui/react'
-import { useEffect, useRef } from 'react'
+import { Button, HStack, Input } from '@chakra-ui/react'
 interface Props {
     text: string | undefined
     setText: React.Dispatch<React.SetStateAction<string | undefined>>
