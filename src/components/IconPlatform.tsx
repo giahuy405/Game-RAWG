@@ -21,7 +21,6 @@ export default function IconPlatform({ platFormArr }: Props) {
         ios: MdPhoneIphone,
         'xbox360': BsGlobe,
     }
-    console.log(platFormArr)
 
     return (
         <HStack>

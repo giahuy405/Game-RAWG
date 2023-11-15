@@ -1,5 +1,8 @@
 import { https } from '../axiosClient'
 import { useEffect, useState } from 'react'
+import { GenreTypes } from '../components/Genre'
+import { PlatForm } from './usePlatform'
+import { OptionSort } from '../components/Sort'
 
 export interface Platform {
     id: number
@@ -12,6 +15,7 @@ export interface gameTypes {
     name: string
     background_image: string
     platforms: { platform: Platform }[]
+    rating: number
 }
 
 interface fetchGameResponse {
@@ -21,19 +25,31 @@ interface fetchGameResponse {
     results: gameTypes[]
 }
 
-export default function useGame() {
-    const [games, setGames] = useState<gameTypes[]>([]);
+export default function useGame(selectedGenre: GenreTypes | undefined, selectPlatform: PlatForm | undefined, sortGame: OptionSort | undefined) {
 
+    console.log(selectedGenre)
+    const [games, setGames] = useState<gameTypes[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const fetchGames = async () => {
-        const res = await https.get<fetchGameResponse>('games');
+        setLoading(true)
+        const res = await https.get<fetchGameResponse>('games', {
+            params: {
+                genres: selectedGenre?.id,
+                parent_platforms: selectPlatform?.id,
+                ordering: sortGame?.value
+            }
+        });
         console.log(res.data)
         setGames(res.data.results)
+        setLoading(false)
     }
     useEffect(() => {
         fetchGames();
-    }, [])
+    }, [selectedGenre, selectPlatform, sortGame])
 
     return {
         games,
+        loading,
+
     }
 }
